@@ -1,0 +1,20 @@
+ version: '3'
+ 
+ 
+ services: 
+   
+   web: 
+    image: israelfrank/work_tasks:webapp
+    build: .
+    ports:
+      - "8080:80"
+   
+   db:
+    image: mysql
+    restart: always
+    env_file:
+     - env-file.env
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./my-db:/var/lib/mysql

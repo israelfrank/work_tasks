@@ -1,0 +1,10 @@
+docker build -t israelfrank/work_tasks:webapp .
+docker login 
+docker push israelfrank/work_tasks:webapp 
+
+#create private registry#
+
+docker build -t web . 
+docker run -d -p 5000:5000 --restart always --name registry registry:2
+docker tag web localhost:5000/web:latest
+docker push  localhost:5000/web:latest

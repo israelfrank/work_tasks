@@ -1,4 +1,4 @@
 FROm nginx
 
-RUN rm -r /usr/share/nginx/html
 COPY hello_world.html /usr/share/nginx/html/index.html
+RUN apt-get update && apt-get install iputils-ping -y
