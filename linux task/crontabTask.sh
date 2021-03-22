@@ -1,1 +1,1 @@
-30 * * * 0-4 sudo rsync -zh /home/usertest1/index.html /home/usertest2/tomcat/apache-tomcat-9.0.44/webapps/hello/
+30 * * * 0-4 sudo rsync -vzh /home/usertest1/index.html /home/usertest2/tomcat/apache-tomcat-9.0.44/webapps/hello/
