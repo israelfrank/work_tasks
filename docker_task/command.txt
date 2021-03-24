@@ -15,5 +15,5 @@ docker load --input mysql.tar
 docker tag web localhost:5000/web:latest
 docker push  localhost:5000/web:latest
 
-##get ip of container##
+#get ip of container#
 docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id
