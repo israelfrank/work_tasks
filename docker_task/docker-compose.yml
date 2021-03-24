@@ -5,7 +5,6 @@
    
    web: 
     image: israelfrank/work_tasks:webapp
-    build: .
     ports:
       - "8080:80"
    
