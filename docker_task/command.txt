@@ -16,4 +16,4 @@ docker tag web localhost:5000/web:latest
 docker push  localhost:5000/web:latest
 
 ##get ip of container##
-ocker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id
