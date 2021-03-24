@@ -17,3 +17,9 @@ docker push  localhost:5000/web:latest
 
 #get ip of container#
 docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id
+
+#command for replica#
+docker-compose up --scale web=3
+
+#for amazon registry#
+466635482175.dkr.ecr.us-west-2.amazonaws.com/ca-container-registry
