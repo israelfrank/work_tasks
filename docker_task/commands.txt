@@ -21,5 +21,3 @@ docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' cont
 #command for replica#
 docker-compose up --scale web=3
 
-#for amazon registry#
-466635482175.dkr.ecr.us-west-2.amazonaws.com/ca-container-registry
