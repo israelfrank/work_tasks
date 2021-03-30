@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-mongoex
+  labels:
+    app: mongoex
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongoex
+  template:
+    metadata:
+      labels:
+        app: mongoex
+    spec:
+      containers:
+      - name: mongoex
+        image: mongo-express:0.54.0
+        ports:
+        - containerPort: 8081
+        env:
+        - name: ME_CONFIG_MONGODB_ADMINUSERNAME 
+          value: user
+        - name: ME_CONFIG_MONGODB_ADMINPASSWORD 
+          value: pass
+        - name: ME_CONFIG_MONGODB_SERVER        
+          value: service-mongodb
