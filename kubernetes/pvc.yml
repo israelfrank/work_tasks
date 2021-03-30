@@ -1,3 +1,4 @@
+#no need in statfulset
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
