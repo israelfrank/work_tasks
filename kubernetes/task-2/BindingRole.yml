@@ -6,8 +6,8 @@ metadata:
 subjects:
 - kind: User
   name: user1
-  apiGroup: rbac.authorization.k8s.io
+  apiGroup: "" 
 roleRef:
   kind: Role #this must be Role or ClusterRole
   name: pod-reader # must match the name of the Role
-  apiGroup: rbac.authorization.k8s.io
+  apiGroup: "" 
