@@ -1,0 +1,9 @@
+##extenal ip minikube##
+minikube service service-mongoex -n work
+
+##user employee get pods ##
+##external ip minikube##
+minikube service service-mongoex -n work
+
+##run get command from another user##
+kubectl --context=employee-context get pods

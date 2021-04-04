@@ -5,7 +5,7 @@ metadata:
   namespace: default
 subjects:
 - kind: User
-  name: user1
+  name: employee
   apiGroup: "" 
 roleRef:
   kind: Role #this must be Role or ClusterRole
