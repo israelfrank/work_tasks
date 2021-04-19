@@ -1,0 +1,26 @@
+@Library("shared-library") _
+pipeline {
+   agent any
+      stages {
+         stage('stage 1') {
+            steps {
+              helloworld()
+            }
+          }
+          stage('stage 2') {
+            steps{
+                configFileProvider([configFile(fileId:'c16b3bcf-f157-4d5a-8398-e238157d41ee',variable:'CONFIG_FILE')]){
+                 sh 'cat ${CONFIG_FILE}' 
+            }    
+             script{
+                sh 'zip -r hello.zip *'    
+                 sh 'ls && pwd'
+                 archiveArtifacts artifacts: 'hello.zip', onlyIfSuccessful: true
+                    withAWS(region:'eu-central-1', credentials:'762265618681'){
+                    s3Upload(bucket:'jenknis-artifact', workingDir:'', includePathPattern:'hello.zip'); 
+                }
+                }   
+            }
+      }
+    }
+}
