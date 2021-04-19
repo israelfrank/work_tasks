@@ -1,1 +1,2 @@
 terraform_task/setup/secret.tfvars
+terraform_task/modules/script.sh
