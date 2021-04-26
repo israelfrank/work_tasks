@@ -1,0 +1,7 @@
+dependencies:
+  - name: mongoex
+    version: 0.1.0
+    repository: file://../mongoex
+  - name: mongodb
+    version: 0.1.0
+    repository: file://../mongodb

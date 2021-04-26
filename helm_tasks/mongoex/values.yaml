@@ -1,0 +1,17 @@
+
+
+replicaCount: 4
+
+image:
+  repository: mongo-express
+  tag: 0.54.0
+
+nameOverride: "mongoex"
+fullnameOverride: "mongoex"
+
+
+service:
+  type: LoadBalancer
+  port: 8081
+  targetPort: 8081
+

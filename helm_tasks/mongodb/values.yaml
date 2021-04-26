@@ -1,0 +1,11 @@
+replicaCount: 1
+
+image:
+  repository: mongo
+  tag: latest
+
+nameOverride: "mongodb"
+fullnameOverride: "mongodb"
+
+
+

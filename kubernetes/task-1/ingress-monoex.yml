@@ -15,4 +15,4 @@
 #               service:
 #                 name: service-mongoex
 #                 port:
-#                   number: 8081
+#                   number: 8081~

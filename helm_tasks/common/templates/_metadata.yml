@@ -1,0 +1,6 @@
+{{- define "common.metadata" -}}
+metadata:
+  name: {{ include "common.fullname" . }}
+  labels:
+    app: {{ include "common.name" . }}
+{{- end -}}
