@@ -1,0 +1,9 @@
+dependencies:
+- name: mongoex
+  repository: file://../mongoex
+  version: 0.1.0
+- name: mongodb
+  repository: file://../mongodb
+  version: 0.1.0
+digest: sha256:93ca7a21cd3378afc31b7d0a57c9023c75d49329bbfbd0e3373affd28f05641c
+generated: "2021-04-26T10:43:57.939032592-07:00"

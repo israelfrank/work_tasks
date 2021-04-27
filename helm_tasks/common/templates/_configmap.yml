@@ -1,6 +1,12 @@
-apiVersion: v1
+{{- define "common.configmap" -}}
+{{- $common := dict "Values" .Values.common -}} 
+{{- $noCommon := omit .Values "common" -}} 
+{{- $overrides := dict "Values" $noCommon -}} 
+{{- $noValues := omit . "Values" -}} 
+{{- with merge $noValues $overrides $common -}}apiVersion: v1
 kind: ConfigMap
-metadata:
-  name: configmap
+{{ template "common.metadata" . }}
 data:
-  url_mongo: service-mongodb
+  url_mongo: {{ .Values.configmap.url }}
+{{- end -}}
+{{- end -}}
