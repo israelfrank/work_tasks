@@ -1,0 +1,44 @@
+# Default values for web.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount_ex: 3
+replica_db: 1
+
+image:
+  name_ex: mongo-express
+  name_db: mongodb
+  repository_ex:  mongo-express
+  tag_ex: 0.54.0
+  repository_db:  mongo
+  tag_db: latest
+
+nameOverride_ex: mongoex
+fullnameOverride_ex: mongoex 
+
+nameOverride_db: mongodb
+fullnameOverride_db: mongodb
+
+
+service:
+  type_db: ClusterIP
+  type_ex: LoadBalancer
+  port_db: 27017
+  port_ex: 8081
+  targetport_ex: 8081
+
+
+
+resources: {}
+ 
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

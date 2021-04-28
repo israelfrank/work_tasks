@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+{{ template "ex.metadata" . }}
+spec:
+  type: {{ .Values.service.type_ex }}
+  ports:
+    - port: {{ .Values.service.port_ex }}
+      targetPort: {{ .Values.service.targetport_ex }}
+      protocol: TCP
+  selector:
+    app: {{ .Values.nameOverride_ex }}

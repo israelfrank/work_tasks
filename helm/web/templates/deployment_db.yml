@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+{{ template "db.metadata" . }}
+spec:
+  replicas: {{ .Values.replicaCount_db }}
+  selector:
+    matchLabels:
+      app: {{ .Values.nameOverride_db }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.nameOverride_db }}
+    spec:
+      containers:
+        - name: {{ .Values.image.name_db }}
+          image: "{{ .Values.image.repository_db }}:{{ .Values.image.tag_db }}"
+          ports:
+          - containerPort: {{ .Values.service.port_db }}
+          env:
+          - name: MONGO_INITDB_ROOT_USERNAME 
+            valueFrom:
+              secretKeyRef:
+                name: secret
+                key: username
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: secret
+                key: password
+          resources:
+{{- toYaml .Values.resources | nindent 12 }}
+     {{- with .Values.nodeSelector }}
+      nodeSelector:
+ {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+{{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+{{- toYaml . | nindent 8 }}
+      {{- end }}

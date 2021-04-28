@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+{{ template "db.metadata" . }}
+spec:
+  type: {{ .Values.service.type_db }}
+  ports:
+    - port: {{ .Values.service.port_db }}
+      protocol: TCP
+  selector:
+    app: {{ .Values.nameOverride_db }}

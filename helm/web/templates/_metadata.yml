@@ -1,0 +1,13 @@
+{{- define "ex.metadata" -}}
+metadata:
+  name: {{ .Values.nameOverride_ex }}
+  labels:
+    app: {{ .Values.nameOverride_ex }}
+{{- end -}}
+
+{{- define "db.metadata" -}}
+metadata:
+  name: {{ .Values.nameOverride_db }}
+  labels:
+    app: {{ .Values.nameOverride_db }}
+{{- end -}}

@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+{{ template "ex.metadata" . }}
+spec:
+  replicas: {{ .Values.replicaCount_ex }}
+  selector:
+    matchLabels:
+      app: {{ .Values.nameOverride_ex }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.nameOverride_ex }}
+    spec:
+      containers:
+        - name: {{ .Values.image.name_ex }}
+          image: "{{ .Values.image.repository_ex }}:{{ .Values.image.tag_ex }}"
+          ports:
+          - containerPort: {{ .Values.service.targetport_ex }}
+          env:
+          - name: ME_CONFIG_MONGODB_ADMINUSERNAME 
+            valueFrom:
+              secretKeyRef:
+                name: secret
+                key: username
+          - name: ME_CONFIG_MONGODB_ADMINPASSWORD 
+            valueFrom:
+              secretKeyRef:
+                name: secret
+                key: password
+          - name: ME_CONFIG_MONGODB_SERVER        
+            valueFrom:
+              configMapKeyRef:
+                name: configmap
+                key: url_mongo 
+          resources:
+{{- toYaml .Values.resources | nindent 12 }}
+     {{- with .Values.nodeSelector }}
+      nodeSelector:
+ {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+{{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+{{- toYaml . | nindent 8 }}
+      {{- end }}
